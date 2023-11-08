@@ -4,7 +4,7 @@ Willkommen im Repository, das die Architekturdiagramme unseres Food Delivery Ser
 
 ## Projektwebsite
 
-Weitere Informationen über unseren Food Delivery Service und die Möglichkeit, unsere Dienste zu nutzen, finden Sie auf unserer [offiziellen Website](https://vabulus.github.io/sse-c4/#/).
+Weitere Informationen über unseren Food Delivery Service und die Möglichkeit, unsere Dienste zu nutzen, finden Sie auf unserer [offiziellen Website](https://vabulus.github.io/food-delievery-service).
 
 ## Ebenen des C4-Modells
 
