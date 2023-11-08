@@ -1,0 +1,58 @@
+@startuml
+skinparam rectangle {
+    BackgroundColor<<Entity>> Wheat
+    BackgroundColor<<Boundary>> LightGreen
+    BackgroundColor<<Control>> LightBlue
+}
+
+' Define some stereotypes
+!define Entity <<Entity>>
+!define Boundary <<Boundary>>
+!define Control <<Control>>
+
+' Define classes
+class OrderController <<Boundary>> {
+    + createOrder(orderData)
+    + cancelOrder(orderId)
+    + getOrderDetails(orderId)
+}
+
+class OrderService <<Control>> {
+    + placeOrder(order)
+    + modifyOrder(order)
+    + cancelOrder(orderId)
+}
+
+class OrderRepository <<Entity>> {
+    + save(order)
+    + findById(orderId)
+    + delete(orderId)
+}
+
+class Order <<Entity>> {
+    - orderId
+    - customerDetails
+    - orderItems
+    - status
+}
+
+' Define relationships
+OrderController --> OrderService : uses
+OrderService --> OrderRepository : uses
+OrderRepository --> Order : manages
+
+' This part is optional to show an example of inheritance
+class SpecialOrder extends Order {
+    - specialInstructions
+}
+
+' Define interface
+interface OrderDataAccess {
+    + save(order)
+    + findById(orderId)
+    + delete(orderId)
+}
+
+OrderRepository ..|> OrderDataAccess
+
+@enduml

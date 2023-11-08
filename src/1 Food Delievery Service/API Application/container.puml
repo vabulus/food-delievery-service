@@ -1,0 +1,35 @@
+@startuml
+!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Component.puml
+
+LAYOUT_WITH_LEGEND()
+
+title Component diagram for the API Gateway - Food Delivery Service
+
+Container(api, "API Gateway", "The entry point for all client applications") {
+    Component(authComponent, "Authentication Component", "Handles authentication and authorization.")
+    Component(orderComponent, "Order Component", "Handles order creation, updates, and retrieval.")
+    Component(paymentComponent, "Payment Component", "Integrates with Payment Gateway to process payments.")
+    Component(deliveryComponent, "Delivery Component", "Manages delivery assignments and status updates.")
+}
+
+ContainerDb(database, "Database", "Stores all persistent data including customer information, orders, and menus.")
+
+Container(restaurantAdminApp, "Restaurant Administration Interface", "Allows restaurants to manage their orders.")
+Container(mobileApp, "Mobile Application", "Allows customers to place orders and track deliveries.")
+
+System_Ext(paymentSystem, "Payment Gateway", "Handles payment transactions.")
+
+Rel(mobileApp, authComponent, "Authenticates via")
+Rel(mobileApp, orderComponent, "Submits orders to")
+Rel(mobileApp, paymentComponent, "Processes payments via")
+
+Rel(restaurantAdminApp, orderComponent, "Manages orders through")
+Rel(restaurantAdminApp, deliveryComponent, "Updates and tracks deliveries through")
+
+Rel(authComponent, database, "Validates users against")
+Rel(orderComponent, database, "Reads and writes orders to")
+Rel(deliveryComponent, database, "Updates delivery info in")
+
+Rel(paymentComponent, paymentSystem, "Integrates with for payment processing")
+
+@enduml

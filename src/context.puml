@@ -1,0 +1,29 @@
+
+
+@startuml
+!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+
+title System Context diagram for Food Delivery Service
+
+System_Boundary(c1, "Food Delivery Service") {
+    System(foodDeliverySystem, "Food Delivery Application", "Central system that processes orders and coordinates deliveries.")
+}
+
+Person(customer, "Customer", "Person who orders food using the mobile app or website.")
+Person(restaurantStaff, "Restaurant Staff", "Staff member who manages incoming orders from the food delivery application.")
+Person(deliveryPersonnel, "Delivery Personnel", "Person who delivers food to the customer.")
+
+System_Ext(paymentSystem, "Payment Gateway", "External system for handling payment transactions.")
+System_Ext(restaurantManagementSystem, "Restaurant Management System", "External system for managing restaurant operations and menus.")
+
+Rel(customer, foodDeliverySystem, "Places orders using")
+Rel(restaurantStaff, foodDeliverySystem, "Receives and manages orders via")
+Rel(deliveryPersonnel, foodDeliverySystem, "Gets delivery assignments from")
+Rel_U(foodDeliverySystem, customer, "Sends order confirmations and delivery updates to")
+
+Rel(foodDeliverySystem, paymentSystem, "Uses for payment processing")
+Rel(foodDeliverySystem, restaurantManagementSystem, "Syncs orders and menu items with")
+
+@enduml

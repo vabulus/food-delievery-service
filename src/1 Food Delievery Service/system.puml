@@ -1,0 +1,35 @@
+@startuml
+!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Container.puml
+
+LAYOUT_WITH_LEGEND()
+
+Person(customer, "Customer", "A person who orders food using the mobile app or website.")
+Person(restaurant, "Restaurant Staff", "A staff member or system at the restaurant that manages orders.")
+System_Ext(paymentGateway, "Payment Gateway", "External service for processing payments.")
+System_Ext(restaurantSystem, "Restaurant Management System", "Manages restaurant menus, orders, and availability.")
+
+System_Boundary(fds, "Food Delivery Service") {
+    Container(webApp, "Web Application", "React and Redux", "Allows customers to order food online.")
+    Container(mobileApp, "Mobile App", "Flutter", "Enables customers to place orders using their smartphones.")
+    Container(api, "Backend API", "Node.js and Express", "Handles all application logic, including order management and delivery tracking.")
+    Container(db, "Database", "PostgreSQL", "Stores customer profiles, order history, and current menu items.")
+    
+    Rel(customer, webApp, "Places orders with", "HTTPS")
+    Rel(customer, mobileApp, "Places orders with")
+    Rel(restaurant, api, "Manages orders through")
+    
+    Rel(api, paymentGateway, "Processes payments with", "API")
+    Rel(api, restaurantSystem, "Synchronizes orders with", "API")
+    Rel(api, db, "Reads from & writes to", "JDBC")
+    
+    Rel(webApp, api, "Uses", "JSON/HTTPS")
+    Rel(mobileApp, api, "Uses", "JSON/HTTPS")
+    
+    Rel_U(api, customer, "Sends order updates to", "Push notifications, SMS")
+    Rel_U(restaurantSystem, restaurant, "Sends notifications to", "Internal system")
+}
+
+Rel(paymentGateway, customer, "Requests payment from")
+Rel(restaurant, webApp, "Receives orders from")
+Rel(restaurant, mobileApp, "Receives orders from")
+@enduml
