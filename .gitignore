@@ -1,0 +1,5 @@
+.DS_Store
+.c4builder
+.idea/
+.vscode/
+src/.DS_Store
