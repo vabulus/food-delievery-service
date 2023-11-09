@@ -1,12 +1,8 @@
 **Level 3: Component diagram**
 
-Next you can zoom in and decompose each container further to identify the major structural building blocks and their interactions.
+Man zoomed in jedem Container und Dekonstruiert aus was er gemacht ist, um seine wesentlichen Bestandteile zu analysieren.
+Die besagten Bestandteile nennt man "Components". Sie werden zuerst identifiziert und dann beschreibt man ihre Aufgaben und Implementationsdetails.
 
-The Component diagram shows how a container is made up of a number of "components", what each of those components are, their responsibilities and the technology/implementation details.
-
-**Scope**: A single container.
-
-**Primary elements**: Components within the container in scope.
-Supporting elements: Containers (within the software system in scope) plus people and software systems directly connected to the components.
-
-**Intended audience**: Software architects and developers.
+**Haupt Element**: Components in einem einzigen Container.
+**Unterstützende Elemente**: Personen und andere Container oder Systeme die direkt mit dem Container verbunden sind.
+**Intended audience**: Softwarearchitekten und developer.

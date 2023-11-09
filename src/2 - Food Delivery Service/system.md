@@ -1,14 +1,13 @@
 **Level 2: Container diagram**
 
-Once you understand how your system fits in to the overall IT environment, a really useful next step is to zoom-in to the system boundary with a Container diagram. A "container" is something like a server-side web application, single-page application, desktop application, mobile app, database schema, file system, etc. Essentially, a container is a separately runnable/deployable unit (e.g. a separate process space) that executes code or stores data.
+Ist ein "zoomed-in" Blick in die Systemgrenzen.
+Das Container diagram verschafft einen Überblick auf die software Architektur, ohne dabei genau ins Detail zu gehen. Jedoch weist es auf die wesentlichen Technology entscheidungen hin.
+Es wird auch verdeutlicht wie die Einzelnen Komponenten miteinander verknüpft sind.
 
-The Container diagram shows the high-level shape of the software architecture and how responsibilities are distributed across it. It also shows the major technology choices and how the containers communicate with one another. It's a simple, high-level technology focussed diagram that is useful for software developers and support/operations staff alike.
 
-**Scope**: A single software system.
+Ein "Container" ist hier eine seperat laufende Einheit die Aufgaben, wie code-execution oder das Speichern von Daten, übernehmen kann.
+Beispiele für Container: Web application, mobile app, database, etc.
 
-**Primary elements**: Containers within the software system in scope.
-Supporting elements: People and software systems directly connected to the containers.
-
-**Intended audience**: Technical people inside and outside of the software development team; including software architects, developers and operations/support staff.
-
-**Notes**: This diagram says nothing about deployment scenarios, clustering, replication, failover, etc.
+**Haupt Elemente**: Container within the software system.
+**Unterstützende Elemente**: Personen und Systeme die direkt mit den Containern verbunden sind.
+**Intended audience**: Technikaffine Personen im und um das Softwaredevelopment Team (z.B.: software architects, developer, tester, etc.)
